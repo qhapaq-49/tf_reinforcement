@@ -1,0 +1,3 @@
+tensorflowを使った簡単なreinforcement learningのサンプルコードです。
+
+詳しい解説はブログ記事をご参照ください。
