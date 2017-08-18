@@ -38,6 +38,7 @@ class seriAgent:
         graph_t = tf.Graph()
         with graph_t.as_default():
             # 入力:X、隠れ層:W1,B1,H1,W2、出力:Y
+            # http://testpy.hatenablog.com/entry/2017/02/02/000000 を参考
             X  = tf.placeholder(tf.float32, [None, glob_inpXdim])
             W1 = tf.Variable(tf.truncated_normal([glob_inpXdim, self.hiddendim], stddev=0.01), name='W1')
             B1 = tf.Variable(tf.zeros([self.hiddendim]), name='B1')
@@ -255,9 +256,14 @@ class seriGame:
     def learnbycsv(self,fname,stepnum,outname):
         self.agent.learnbycsv(fname,stepnum,outname)
 
-# 自己対戦
-playout = seriGame("model4/test_model4","model3/test_model3")
-playout.playout(30000,"hoge5",False,False)
+
+# ランダムムーブで戦わせる
+playout = seriGame("","")
+playout.playout(30000,"hoge",True,True)
+
+# 特定のモデルを読み込み戦わせる
+# playout = seriGame("model4/test_model4","model3/test_model3")
+# playout.playout(30000,"hoge",False,False)
 
 # 学習
 #sa = seriAgent()
